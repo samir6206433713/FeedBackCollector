@@ -1,6 +1,8 @@
 import 'package:feedbackcollector/login.dart';
 import 'package:flutter/material.dart';
 import 'registration.dart';
+import 'apicall/demopostapi.dart';
+import 'apicall/modelapi.dart';
 
 class Signup extends StatefulWidget {
   @override
@@ -8,6 +10,7 @@ class Signup extends StatefulWidget {
 }
 
 class _Login extends State<Signup> {
+  Future<Album> _futureAlbum;
 
 
   @override
@@ -90,8 +93,12 @@ class _Login extends State<Signup> {
                   padding: EdgeInsets.all(8.0),
                   splashColor: Colors.blueAccent,
                   onPressed: () {
-                    home: Signup();
-                    /*...*/
+                    home:setState(() {
+
+                      Networkcall netwrorkcall= new Networkcall();
+                      _futureAlbum = netwrorkcall.createAlbum("JAVAGAL SRINATH");
+                    });
+
                   },
                   child: Text(
                     "Submit",
@@ -127,3 +134,11 @@ class _Login extends State<Signup> {
     );
   }
 }
+
+
+
+/*onPressed: () {
+setState(() {
+_futureAlbum = createAlbum(_controller.text);
+});
+},*/
